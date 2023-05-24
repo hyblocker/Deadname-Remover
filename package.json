@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "typeCheck": "tsc --noEmit",
+    "typeCheck": "tsc --noEmit && tsc --noEmit -p tsconfig.foy.json",
     "build": "foy build",
     "dev": "foy dev"
   },
