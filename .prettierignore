@@ -1,0 +1,13 @@
+# Files covered by ESLint
+*.ts
+*.tsx
+*.js
+*.jsx
+*.cjs
+*.mjs
+
+# Machine-generated files that shouldn't be tinkered with
+pnpm-lock.yaml
+
+# Artifacts
+dist
