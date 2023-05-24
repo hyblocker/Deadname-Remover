@@ -164,7 +164,7 @@ body.non-binary .slider {
 body.trans .slider::after,
 body.non-binary .slider::after {
   position: absolute;
-  content: "";
+  content: '';
   height: 26px;
   width: 26px;
   left: 4px;
@@ -228,7 +228,7 @@ body.non-binary #theme-toggle-container option {
 
 body.trans #theme-toggle-container:after,
 body.non-binary #theme-toggle-container:after {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   right: 8px;
@@ -337,20 +337,26 @@ body.non-binary .option-toggle-container .slider {
 }
 
 body.trans .option-toggle:checked + .slider {
-  background-image: linear-gradient(#55cdfc, #55cdfc), linear-gradient(#f7a8b8, #f7a8b8), linear-gradient(#ffffff, #ffffff),
+  background-image: linear-gradient(#55cdfc, #55cdfc),
+    linear-gradient(#f7a8b8, #f7a8b8), linear-gradient(#ffffff, #ffffff),
     linear-gradient(#f7a8b8, #f7a8b8), linear-gradient(#55cdfc, #55cdfc);
-  background-size: 100% calc(1 * (100% / 5)), 100% calc(2 * (100% / 5)), 100% calc(3 * (100% / 5)), 100% calc(4 * (100% / 5)),
+  background-size: 100% calc(1 * (100% / 5)), 100% calc(2 * (100% / 5)),
+    100% calc(3 * (100% / 5)), 100% calc(4 * (100% / 5)),
     100% calc(5 * (100% / 5));
   background-repeat: no-repeat;
-  box-shadow: -13px -10px 10px -6px #55cdfc, 13px -10px 10px -6px #55cdfc, -13px 10px 10px -6px #f7a8b8, 13px 10px 10px -6px #f7a8b8;
+  box-shadow: -13px -10px 10px -6px #55cdfc, 13px -10px 10px -6px #55cdfc,
+    -13px 10px 10px -6px #f7a8b8, 13px 10px 10px -6px #f7a8b8;
 }
 
 body.non-binary .option-toggle:checked + .slider {
-  background-image: linear-gradient(#fff430, #fff430), linear-gradient(#ffffff, #ffffff), linear-gradient(#9c59d1, #9c59d1),
+  background-image: linear-gradient(#fff430, #fff430),
+    linear-gradient(#ffffff, #ffffff), linear-gradient(#9c59d1, #9c59d1),
     linear-gradient(#000000, #000000);
-  background-size: 100% calc(1 * (100% / 4)), 100% calc(2 * (100% / 4)), 100% calc(3 * (100% / 4)), 100% calc(4 * (100% / 4));
+  background-size: 100% calc(1 * (100% / 4)), 100% calc(2 * (100% / 4)),
+    100% calc(3 * (100% / 4)), 100% calc(4 * (100% / 4));
   background-repeat: no-repeat;
-  box-shadow: -13px -10px 10px -6px #fff430, 13px -10px 10px -6px #fff430, -13px 10px 10px -6px #9c59d1, 13px 10px 10px -6px #9c59d1;
+  box-shadow: -13px -10px 10px -6px #fff430, 13px -10px 10px -6px #fff430,
+    -13px 10px 10px -6px #9c59d1, 13px 10px 10px -6px #9c59d1;
 }
 
 /* #region Transgender Theme Specific */
@@ -360,11 +366,19 @@ body.trans .text-slide-background {
 
 body.trans form input:focus {
   transition: box-shadow 0.2s ease-out;
-  box-shadow: -13px -10px 10px -6px #55cdfc, 13px -10px 10px -6px #55cdfc, -13px 10px 10px -6px #f7a8b8, 13px 10px 10px -6px #f7a8b8;
+  box-shadow: -13px -10px 10px -6px #55cdfc, 13px -10px 10px -6px #55cdfc,
+    -13px 10px 10px -6px #f7a8b8, 13px 10px 10px -6px #f7a8b8;
 }
 
 body.trans button {
-  background-image: linear-gradient(90deg, #55cdfc 0%, #f7a8b8 25%, #ffffff 50%, #f7a8b8 75%, #55cdfc 100%);
+  background-image: linear-gradient(
+    90deg,
+    #55cdfc 0%,
+    #f7a8b8 25%,
+    #ffffff 50%,
+    #f7a8b8 75%,
+    #55cdfc 100%
+  );
 }
 /* #endregion */
 
@@ -375,11 +389,19 @@ body.non-binary .text-slide-background {
 
 body.non-binary form input:focus {
   transition: box-shadow 0.2s ease-out;
-  box-shadow: -13px -10px 10px -6px #fff430, 13px -10px 10px -6px #fff430, -13px 10px 10px -6px #9c59d1, 13px 10px 10px -6px #9c59d1;
+  box-shadow: -13px -10px 10px -6px #fff430, 13px -10px 10px -6px #fff430,
+    -13px 10px 10px -6px #9c59d1, 13px 10px 10px -6px #9c59d1;
 }
 
 body.non-binary button {
-  background: linear-gradient(90deg, #fff430 0%, #9c59d1 30%, #ffffff 50%, #9c59d1 70%, #fff430 100%);
+  background: linear-gradient(
+    90deg,
+    #fff430 0%,
+    #9c59d1 30%,
+    #ffffff 50%,
+    #9c59d1 70%,
+    #fff430 100%
+  );
 }
 /* #endregion */
 
@@ -387,13 +409,13 @@ body.non-binary button {
 body.high-contrast-light {
   background-color: white;
   color: black;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body.high-contrast-dark {
   background-color: #3d3d3d;
   color: white;
-  font-family: "Times New Roman", Times, serif;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 body.high-contrast-light button,
