@@ -28,7 +28,18 @@ const excludeFromBackground = ['title', 'input'];
 /* eslint-disable-next-line import/prefer-default-export */
 export function handleNode(textNode: Node) {
   if (!textNode.parentElement?.innerHTML) throw Error(`${textNode.parentElement.nodeName}`);
-  textNode.parentElement.innerHTML = textNode.parentElement.innerHTML.replace(deadnames, (match: string) => { // eslint-disable-line no-param-reassign, max-len
+  if (textNode.parentElement.nodeName === 'FORM') {
+    // eslint-disable-next-line no-plusplus
+    for (let i = 0; i < (textNode.parentElement as HTMLFormElement).length; i++) {
+      textNode.parentElement[i].innerHTML = textNode.parentElement[i].innerHTML.replace(deadnames, (match: string) => { // eslint-disable-line no-param-reassign, max-len
+        const properName = flatten(names)[match.toLowerCase()];
+        const matchedCase = matchCase(match, properName);
+        return matchedCase;
+      });
+    }
+  }
+
+  textNode.parentElement.innerHTML = textNode.parentElement.innerHTML.replace(deadnames,   (match: string) => { // eslint-disable-line no-param-reassign, max-len
     const properName = flatten(names)[match.toLowerCase()];
     const matchedCase = matchCase(match, properName);
     if (excludeFromBackground.includes(textNode.parentElement.nodeName.toLowerCase())) {
