@@ -39,7 +39,7 @@ export function handleNode(textNode: Node) {
     }
   }
 
-  textNode.parentElement.innerHTML = textNode.parentElement.innerHTML.replace(deadnames,   (match: string) => { // eslint-disable-line no-param-reassign, max-len
+  textNode.parentElement.innerHTML = textNode.parentElement.innerHTML.replace(deadnames, (match: string) => { // eslint-disable-line no-param-reassign, max-len
     const properName = flatten(names)[match.toLowerCase()];
     const matchedCase = matchCase(match, properName);
     if (excludeFromBackground.includes(textNode.parentElement.nodeName.toLowerCase())) {

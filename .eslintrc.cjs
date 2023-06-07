@@ -6,11 +6,11 @@ module.exports = {
   extends: ['airbnb-base', 'airbnb-typescript/base'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json', 'cypress/tsconfig.json'],
+    project: ['./tsconfig.json', './tsconfig.foy.json', 'cypress/tsconfig.json'],
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
   rules: {},
-  ignorePatterns: ['.eslintrc.cjs', 'old-src'],
+  ignorePatterns: ['.eslintrc.cjs', 'deadname-remover.*.js', 'dist'],
 };
