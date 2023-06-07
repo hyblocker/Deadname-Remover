@@ -12,7 +12,7 @@ const buildContext: BuildOptions = {
   outdir: 'dist',
   allowOverwrite: true,
   logLevel: 'info',
-  minify: false,
+  minify: true,
   sourcemap: false,
 };
 
@@ -21,7 +21,7 @@ task('dev', async (ctx) => {
   const esbuild = await context({
     ...buildContext,
     sourcemap: true,
-    minify: true,
+    minify: false,
   });
 
   await rmDist();
