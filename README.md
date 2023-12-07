@@ -13,8 +13,8 @@ If you somehow can't install the extension (due to disabling LGBT-related extens
 Requires Node LTS or higher
 
 - Open a command shell and navigate to the root directory
-- Type `npm install` to install the node devDependencies
-- To compile the project type `npm run debug` for debug, and `npm run production` for production-ready files
+- Type `pnpm install` to install the node devDependencies
+- To compile the project type `pnpm run debug` for debug, and `pnpm run production` for production-ready files
 - The building process will collate a formatted use-able plugin structure into the dist/-folder
 - From this folder it can be side-loaded into Firefox or Chromium-based browsers
 
