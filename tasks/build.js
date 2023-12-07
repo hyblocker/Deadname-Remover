@@ -1,6 +1,6 @@
-import { debug } from './compile-debug.js';
-import { production } from './compile-production.js';
-import { typeCheck } from './type-checking.js';
+import debug from './compile-debug';
+import production from './compile-production';
+import typeCheck from './type-checking';
 
 async function run() {
   const args = process.argv.slice(2);

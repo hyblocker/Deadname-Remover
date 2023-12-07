@@ -5,8 +5,49 @@ let deadNameCounter = 0;
 let counter = 0;
 let settings: UserSettings = null;
 
+const leftArrow = document.querySelector('.leftArrow');
+const rightArrow = document.querySelector('.rightArrow');
+
+function saveCurrentDeadName(index: number) {
+  const deadName: Name = {
+    first: (document.getElementById('txtFirstDeadname') as HTMLInputElement).value.trim(),
+    middle: (document.getElementById('txtMidDeadname') as HTMLInputElement).value.trim(),
+    last: (document.getElementById('txtLastDeadname') as HTMLInputElement).value.trim(),
+  };
+  if (deadName.first || deadName.middle || deadName.last) {
+    settings.deadname[index] = deadName;
+  } else {
+    settings.deadname.splice(index, 1);
+  }
+}
+
+function renderDeadName(
+  oldIndex: number,
+  newIndex: number,
+  options: { disableSave: boolean } = { disableSave: false },
+) {
+  if (!options.disableSave) {
+    saveCurrentDeadName(oldIndex);
+  }
+  if (newIndex === 0) {
+    leftArrow.classList.toggle('active', false);
+  } else {
+    leftArrow.classList.toggle('active', true);
+  }
+  if (newIndex === settings.deadname.length) {
+    settings.deadname.push(DEFAULT_SETTINGS.deadname[0]);
+    rightArrow.classList.toggle('active', false);
+  } else {
+    rightArrow.classList.toggle('active', true);
+  }
+  (document.getElementById('txtFirstDeadname') as HTMLInputElement).value = settings.deadname[newIndex].first;
+  (document.getElementById('txtMidDeadname') as HTMLInputElement).value = settings.deadname[newIndex].middle;
+  (document.getElementById('txtLastDeadname') as HTMLInputElement).value = settings.deadname[newIndex].last;
+}
+
 function getRequestId() {
-  return ++counter;
+  counter += 1;
+  return counter;
 }
 
 function sendRequest(request, executor: (response, resolve: (data?) => void) => void) {
@@ -42,19 +83,6 @@ getData().then(($settings: UserSettings) => {
   readyStateListeners.forEach((listener) => listener());
   readyStateListeners.clear();
 });
-
-function saveCurrentDeadName(index: number) {
-  const deadName: Name = {
-    first: (document.getElementById('txtFirstDeadname') as HTMLInputElement).value.trim(),
-    middle: (document.getElementById('txtMidDeadname') as HTMLInputElement).value.trim(),
-    last: (document.getElementById('txtLastDeadname') as HTMLInputElement).value.trim(),
-  };
-  if (deadName.first || deadName.middle || deadName.last) {
-    settings.deadname[index] = deadName;
-  } else {
-    settings.deadname.splice(index, 1);
-  }
-}
 
 function loadDOM() {
   (document.getElementById('txtFirstName') as HTMLInputElement).value = settings.name.first;
@@ -107,7 +135,7 @@ document.getElementById('btnSave').addEventListener('click', saveSettings);
 
 const coll = document.getElementsByClassName('hide');
 
-for (let i = 0, len = coll.length; i < len; i++) {
+for (let i = 0, len = coll.length; i < len; i += 1) {
   coll[i].addEventListener('click', (event: MouseEvent) => {
     const content = (event.target as HTMLInputElement).nextElementSibling as HTMLElement;
     if (content.style.maxHeight) {
@@ -118,14 +146,14 @@ for (let i = 0, len = coll.length; i < len; i++) {
   });
 }
 
-const leftArrow = document.querySelector('.leftArrow');
-const rightArrow = document.querySelector('.rightArrow');
 leftArrow.addEventListener('click', () => {
-  renderDeadName(deadNameCounter, --deadNameCounter);
+  deadNameCounter -= 1;
+  renderDeadName(deadNameCounter, deadNameCounter);
 });
 
 rightArrow.addEventListener('click', () => {
-  renderDeadName(deadNameCounter, ++deadNameCounter);
+  deadNameCounter += 1;
+  renderDeadName(deadNameCounter, deadNameCounter);
 });
 
 (document.getElementById('stealth-option') as HTMLInputElement).addEventListener('change', (e: Event) => {
@@ -156,23 +184,3 @@ function onChangeInput() {
 }
 
 onChangeInput();
-
-function renderDeadName(oldIndex: number, newIndex: number, options: { disableSave: boolean } = { disableSave: false }) {
-  if (!options.disableSave) {
-    saveCurrentDeadName(oldIndex);
-  }
-  if (newIndex === 0) {
-    leftArrow.classList.toggle('active', false);
-  } else {
-    leftArrow.classList.toggle('active', true);
-  }
-  if (newIndex === settings.deadname.length) {
-    settings.deadname.push(DEFAULT_SETTINGS.deadname[0]);
-    rightArrow.classList.toggle('active', false);
-  } else {
-    rightArrow.classList.toggle('active', true);
-  }
-  (document.getElementById('txtFirstDeadname') as HTMLInputElement).value = settings.deadname[newIndex].first;
-  (document.getElementById('txtMidDeadname') as HTMLInputElement).value = settings.deadname[newIndex].middle;
-  (document.getElementById('txtLastDeadname') as HTMLInputElement).value = settings.deadname[newIndex].last;
-}

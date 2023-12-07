@@ -1,7 +1,7 @@
 import { build } from 'esbuild';
-import { clean, files, copyFiles } from './utils.js';
+import { clean, files, copyFiles } from './utils';
 
-export async function production() {
+export default async function production() {
   await clean();
   await copyFiles();
 

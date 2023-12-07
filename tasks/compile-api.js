@@ -1,15 +1,15 @@
 import { build } from 'esbuild';
 import fs from 'fs-extra';
 import pjson from '../package.json';
-import types from '../src/types';
+import { DEFAULT_SETTINGS } from '../src/types';
 
 async function api() {
   await fs.remove('deadname-remover.require.js');
   await fs.remove('deadname-remover.meta.js');
   await fs.remove('deadname-remover.user.js');
 
-  const settings = JSON.stringify(types.DEFAULT_SETTINGS, null, '\t').split('\n');
-  for (let x = 0, len = settings.length; x < len; x++) {
+  const settings = JSON.stringify(DEFAULT_SETTINGS, null, '\t').split('\n');
+  for (let x = 0, len = settings.length; x < len; x += 1) {
     settings[x] = `\t${settings[x].replace(/.+?(?=:)/g, (m$) => m$.replace(/"/g, ''))}`;
   }
 

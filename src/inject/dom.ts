@@ -8,7 +8,7 @@ function addDOMReadyListener(listener: () => void) {
   readyStateListeners.add(listener);
 }
 
-export const domAction = (callback: () => void) => {
+const domAction = (callback: () => void) => {
   if (!isDOMReady()) {
     addDOMReadyListener(callback);
   } else {
@@ -26,3 +26,5 @@ if (!isDOMReady()) {
   };
   document.addEventListener('readystatechange', onReadyStateChange);
 }
+
+export default domAction;

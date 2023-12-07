@@ -5,7 +5,8 @@ const port = chrome.runtime.connect({ name: 'popup' });
 let counter = 0;
 
 function getRequestId() {
-  return ++counter;
+  counter += 1;
+  return counter;
 }
 
 function sendRequest(request, executor: (response, resolve: (data?) => void) => void) {
